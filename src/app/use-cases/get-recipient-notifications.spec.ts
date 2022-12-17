@@ -1,6 +1,5 @@
 import { makeNotification } from '@test/factories/notification-factory';
 import { InMemoryNotificationsRepository } from '@test/repositories/in-memory-notifications-repository';
-import { CountRecipientNotification } from './count-recipient-notifications';
 import { GetRecipientNotification } from './get-recipient-notifications';
 
 describe('Get recipient notifications', () => {
@@ -29,17 +28,15 @@ describe('Get recipient notifications', () => {
     );
 
     const { notifications } = await getRecipientNotifications.execute({
-      recipientId: 'example',
+      recipientId: 'recipient-1',
     });
 
     expect(notifications).toHaveLength(2);
     expect(notifications).toEqual(
-      expect(
-        expect.arrayContaining([
-          expect.objectContaining({ recipientId: 'recipient-1' }),
-          expect.objectContaining({ recipientId: 'recipient-1' }),
-        ]),
-      ),
+      expect.arrayContaining([
+        expect.objectContaining({ recipientId: 'recipient-1' }),
+        expect.objectContaining({ recipientId: 'recipient-1' }),
+      ]),
     );
   });
 });

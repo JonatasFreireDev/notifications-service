@@ -28,7 +28,7 @@ describe('Count recipient notifications', () => {
     );
 
     const { count } = await countRecipientNotification.execute({
-      recipientId: 'example',
+      recipientId: 'recipient-1',
     });
 
     expect(count).toEqual(2);
